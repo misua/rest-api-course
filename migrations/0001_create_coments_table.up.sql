@@ -3,4 +3,4 @@ CREATE TABLE IF NOT EXISTS comments (
     Slug text,
     Author text,
     Body text,
-)
+);
