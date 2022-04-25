@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 
 	"github.com/misua/go-rest-api-course/internal/db"
@@ -15,11 +14,10 @@ func Run() error {
 		fmt.Println("failed to connect to db")
 		return err
 	}
-	if err :=db.MigrateDB();if err != nil{
+	if err := db.MigrateDB(); err != nil {
 		fmt.Println("failed to migrate db")
 		return err
 	}
-
 
 	// if err := db.Ping(context.Background()); err != nil {
 	// 	return err

@@ -19,7 +19,10 @@ func (d *Database) MigrateDB() error {
 
 	m, err := migrate.NewWithDatabaseInstance(
 		"file:///migrations",
-		"postgres", driver)
+		"postgres",
+		driver,
+	)
+
 	if err != nil {
 		log.Error(err.Error())
 		return err
