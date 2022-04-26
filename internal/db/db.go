@@ -14,7 +14,7 @@ type Database struct {
 	Client *sqlx.DB
 }
 
-func NewDatbase() (*Database, error) {
+func NewDatabase() (*Database, error) {
 	connectionString := fmt.Sprintf(
 		"host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
 		os.Getenv("DB_HOST"),

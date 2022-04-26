@@ -9,7 +9,7 @@ import (
 func Run() error {
 	fmt.Println("starting up our application")
 
-	db, err := db.NewDatbase()
+	db, err := db.NewDatabase()
 	if err != nil {
 		fmt.Println("failed to connect to db")
 		return err
