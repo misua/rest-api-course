@@ -28,7 +28,7 @@ func Run() error {
 }
 
 func main() {
-	fmt.Println("go Rest API course")
+	fmt.Println("hakeng coins.ph")
 	if err := Run(); err != nil {
 		fmt.Println(err)
 	}
