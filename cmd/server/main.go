@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
+	"github.com/misua/go-rest-api-course/internal/comment"
 	"github.com/misua/go-rest-api-course/internal/db"
 )
 
@@ -18,6 +20,23 @@ func Run() error {
 		fmt.Println("failed to migrate db")
 		return err
 	}
+
+	cmtService := comment.NewService(db)
+	cmtService.PostComment(
+		context.Background(),
+		comment.Comment{
+			ID:     "9fbf72e8-7d13-42a0-af26-6a2818036f37",
+			Slug:   "manual-test",
+			Author: "Charles",
+			Body:   "Hello World",
+		},
+	)
+
+	fmt.Println(
+		cmtService.GetComment(
+			context.Background(),
+			"5fde3067-16b5-480f-82a2-77920beb1eda",
+		))
 
 	// if err := db.Ping(context.Background()); err != nil {
 	// 	return err

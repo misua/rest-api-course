@@ -26,6 +26,7 @@ type Comment struct {
 
 type Store interface {
 	GetComment(context.Context, string) (Comment, error)
+	PostComment(context.Context, Comment) (Comment, error)
 }
 
 // Service - is the struct on which all our logic
@@ -44,6 +45,7 @@ func NewService(store Store) *Service {
 //constructor func
 func (s *Service) GetComment(ctx context.Context, id string) (Comment, error) {
 	fmt.Println("retrieving a comment")
+
 	cmt, err := s.Store.GetComment(ctx, id)
 	if err != nil {
 		fmt.Println(err)
@@ -60,6 +62,12 @@ func (s *Service) DeleteComment(ctx context.Context, id string) error {
 	return ErrNotImplemented
 }
 
-func (s *Service) CreateComment(ctx context.Context, cmt Comment) (Comment, error) {
-	return Comment{}, ErrNotImplemented
+func (s *Service) PostComment(ctx context.Context, cmt Comment) (Comment, error) {
+	insertCmt, err := s.Store.PostComment(ctx, cmt)
+
+	if err != nil {
+		return Comment{}, err
+	}
+
+	return insertCmt, nil
 }
